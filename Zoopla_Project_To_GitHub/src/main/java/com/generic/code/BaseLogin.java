@@ -19,13 +19,15 @@ import com.util.TakeAppScreenShot;
 import com.util.Wait;
 
 public class BaseLogin {
+	
+	protected static WebDriver driver;
 
 	public static void getLogin() throws Throwable {
 		
 		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
 		System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 		Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
-		WebDriver driver = new ChromeDriver();
+		driver = new ChromeDriver();
 		
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
@@ -33,7 +35,6 @@ public class BaseLogin {
 		
 		LoginPage login =new LoginPage(driver);
 		System.out.println(driver.getTitle());
-		//new Highlighter().getcolor(driver, login.getLogin());
 		
 		login.getCookies().click();
 		login.getLogin().click();
@@ -44,7 +45,7 @@ public class BaseLogin {
 		new Highlighter().getcolor(driver, login.getEmail(), "yellow");
 		login.getEmail().sendKeys(BaseConfig.getconfig("email"));
 		
-		new Highlighter().getcolor(driver, login.getPass(),"black");
+		new Highlighter().getcolor(driver, login.getPass(),"yellow");
 		login.getPass().sendKeys(BaseConfig.getconfig("pass"));
 		Thread.sleep(2500);
 
@@ -52,7 +53,9 @@ public class BaseLogin {
 		System.out.println(driver.getTitle());
 		TakeAppScreenShot.captureScreenShot(driver, "Login success");
 		
-		driver.quit();
+		//driver.quit();
+		
+		//return driver;
 		
 	}
 }

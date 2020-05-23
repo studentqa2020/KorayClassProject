@@ -43,5 +43,4 @@ public class LoginPage {//Page Object Modal ==== PageFactory
 	public WebElement getSubmit() {
 		return submit;
 	}
-
 }

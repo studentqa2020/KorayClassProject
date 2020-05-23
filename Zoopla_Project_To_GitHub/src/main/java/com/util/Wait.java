@@ -14,9 +14,20 @@ public class Wait {
 		obj.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
-	public static void getExplicitWaitForNumber(WebDriver driver,By locator) {
+	public static void getExplicitWaitForNumber(WebDriver driver, By locator) {
 
 		WebDriverWait obj = new WebDriverWait(driver, 30);
 		obj.until(ExpectedConditions.numberOfElementsToBeMoreThan(locator, 0));
+	}
+
+	public static void getExplicitWaitVisible(WebDriver driver, By locator) {
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	public static void getExplicitWaitVisible(WebDriver driver, WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOf(element));
+
 	}
 }
